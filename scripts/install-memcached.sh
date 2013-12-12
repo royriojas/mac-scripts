@@ -19,6 +19,9 @@ fi
 
 echo $(pear version)
 
+echo '===> Install libmemcached using ports'
+sudo port install libmemcached
+
 echo '===> Now get memcached and installed it'
 
 mkdir -p ~/tmp/memcached-temp
