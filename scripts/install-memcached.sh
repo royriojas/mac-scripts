@@ -19,8 +19,10 @@ fi
 
 echo $(pear version)
 
-echo '===> Install libmemcached using ports'
+echo "===> libmemcached will be installed using Macports. If this fail make sure you have Macports installed"
+
 sudo port install libmemcached
+sudo port load memcached
 
 echo '===> Now get memcached and installed it'
 
