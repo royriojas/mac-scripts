@@ -1,2 +1,9 @@
 #!/bin/sh
-python -m SimpleHTTPServer
+
+PORT=$1
+
+if [ ! -n "$1" ]; then
+  PORT=""
+fi
+
+python -m SimpleHTTPServer ${PORT}
