@@ -1,0 +1,29 @@
+#!/usr/bin/env node
+
+var spawn = require( 'child_process' ).spawn;
+
+var args = process.argv.slice(2);
+
+var deleteFromRemote = args.map(function (branch) {
+  return ':' + branch;
+});
+
+var branchesToDelete = args.join(' ');
+
+var child = spawn('git', ['branch', '-D'].concat( args ), { stdio: 'inherit' });
+
+child.on('close', function (code) {
+  if (code !== 0) {
+    console.error('deleting branches returned with code ', code);
+    return;
+  }  
+});
+
+console.log('remote branches: ',deleteFromRemote);
+var child2 = spawn('git', ['push', 'origin'].concat( deleteFromRemote ).concat(['--no-verify']), { stdio: 'inherit' });
+child2.on('close', function (code) {
+  if (code !== 0) {
+    console.error('deleting remote branches returned with code ', code);
+    return;
+  }  
+});
