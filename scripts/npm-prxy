@@ -1,0 +1,7 @@
+#!/bin/sh
+
+PROXIES="--proxy http://proxy-us.intel.com:911 --https-proxy http://proxy-us.intel.com:912"
+
+echo "installing deps using the ${PROXIES}"
+
+npm $PROXIES $@

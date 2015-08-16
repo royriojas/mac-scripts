@@ -1,0 +1,14 @@
+#!/bin/sh
+
+export http_proxy=http://proxy-us.intel.com:911
+export https_proxy=http://proxy-us.intel.com:912
+
+echo "using git with the proxy set"
+
+git $@
+
+unset http_proxy
+unset https_proxy
+
+
+
